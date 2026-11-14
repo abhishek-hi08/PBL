@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Germany • Travel Brochure & National Transport Plan</title>
+  <meta name="description"
+    content="Discover Germany's fairy-tale castles, vibrant culture, and world-class rail network with our comprehensive travel brochure and interactive transport plan.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23F26A54%22/><text y=%2265%22 font-size=%2255%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22 x=%2250%22>G</text></svg>">
+</head>
+
+<body>
+
+  <!-- MASTER APP CONTAINER (Framed with Coral Accent like User Reference Mockup) -->
+  <div class="app-viewport">
+
+    <!-- ==========================================================================
+         HERO SECTION (Pixel-matched to User's Uploaded Reference Image)
+         ========================================================================== -->
+    <section class="hero-container" id="heroContainer">
+
+      <!-- Crossfading Hero Backgrounds -->
+      <div class="hero-bg-layer active" data-slide-index="0"
+        style="background-image: url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=2400&q=85');">
+      </div>
+      <div class="hero-bg-layer inactive" data-slide-index="1"
+        style="background-image: url('https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=2400&q=85');">
+      </div>
+      <div class="hero-bg-layer inactive" data-slide-index="2"
+        style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2400&q=85');">
+      </div>
+      <div class="hero-bg-layer inactive" data-slide-index="3"
+        style="background-image: url('https://images.unsplash.com/photo-1508873696983-2df57046475a?auto=format&fit=crop&w=2400&q=85');">
+      </div>
+      <div class="hero-bg-layer inactive" data-slide-index="4"
+        style="background-image: url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=2400&q=85');">
+      </div>
+
+      <!-- Dark Vignette Overlay -->
+      <div class="hero-overlay"></div>
+
+      <!-- React Bits GlowCursor Canvas (Layered in Background behind cards, text & navbar) -->
+      <canvas id="glowCursorCanvas" class="glow-cursor-canvas" aria-hidden="true"></canvas>
+
+      <!-- Top Navigation Bar -->
+      <header class="hero-header">
+        <!-- Left Logo Badge: Coral circle with 'G' (like 'J' in Japan reference) -->
+        <a href="#heroContainer" class="brand-logo-circle" title="Germany Travel & Transit">
+          <span>G</span>
+        </a>
+
+        <!-- Centered Frosted Pill Navigation with Expanding Search -->
+        <nav class="nav-frosted-pill" id="navFrostedPill">
+          <ul class="nav-links-list" id="navLinksList">
+            <li><a href="#brochure-section" class="nav-link active">Destinations</a></li>
+            <li><a href="#transport-section" class="nav-link">Transport Plan</a></li>
+            <li><a href="#scenic-section" class="nav-link">Scenic Rail</a></li>
+            <li><a href="#itineraries-section" class="nav-link">Itineraries</a></li>
+            <li><a href="#practical-section" class="nav-link">Travel Guide</a></li>
+          </ul>
+
+          <!-- Expanding Search Bar Container -->
+          <div class="nav-search-expand-wrap" id="navSearchExpandWrap">
+            <button class="nav-search-btn" id="navSearchBtn" aria-label="Open search bar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <input type="text" class="nav-inline-search-input" id="navInlineSearchInput"
+              placeholder="Search castles, ICE routes, cities..." autocomplete="off">
+            <button class="nav-search-close-btn" id="navSearchCloseBtn" aria-label="Close search">✕</button>
+          </div>
+
+          <!-- Instant Search Dropdown Results Attached to Navbar -->
+          <div class="nav-search-dropdown" id="navSearchDropdown"></div>
+        </nav>
+
+        <!-- Right Menu Pill with 9-dot Grid Icon -->
+        <button class="menu-pill-btn open-brochure-modal-btn">
+          <span>Brochure</span>
+          <div class="grid-icon-9">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </header>
+
+      <!-- Main Hero Content -->
+      <div class="hero-body">
+
+        <!-- Left Vertical Timeline Slider (From Reference Image) -->
+        <div class="hero-timeline">
+          <div class="timeline-line"></div>
+          <div class="timeline-node active" data-index="0" title="Bavaria & Neuschwanstein"></div>
+          <div class="timeline-node" data-index="1" title="Berlin & Modern Culture"></div>
+          <div class="timeline-node" data-index="2" title="Black Forest & Spas"></div>
+          <div class="timeline-node" data-index="3" title="Rhine Valley & Castles"></div>
+          <div class="timeline-node" data-index="4" title="Hamburg & Maritime North"></div>
+        </div>
+
+        <!-- Left Hero Typography & Action Button -->
+        <div class="hero-content-left">
+          <div class="hero-german-badge">
+            <span class="flag-strip">
+              <span></span><span></span><span></span>
+            </span>
+            <span>Willkommen in Deutschland</span>
+          </div>
+
+          <h1 class="hero-title" id="heroTitle">Germany</h1>
+          <p class="hero-subtitle" id="heroSubtitle">
+            Timeless traditions, fairy-tale castles, and unforgettable experiences.
+          </p>
+
+          <a href="#brochure-section" class="hero-cta-btn" id="heroCtaBtn">
+            <span>Explore Germany</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right Side: 3 Floating Destination Cards Deck -->
+        <div class="hero-cards-deck" id="heroCardsDeck">
+          <!-- Populated dynamically by js/app.js -->
+        </div>
+
+      </div>
+
+      <!-- Bottom Controls: Scroll Hint on Left, Prev/Next Arrows & 01-05 on Right -->
+      <div class="hero-bottom-controls">
+        <a href="#brochure-section" class="scroll-cue">
+          <div class="scroll-cue-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </div>
+          <span>Scroll to discover</span>
+        </a>
+
+        <div class="slider-controls-group">
+          <div class="slider-arrows-wrap">
+            <button class="slider-nav-btn" id="sliderPrevBtn" aria-label="Previous destination">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button class="slider-nav-btn" id="sliderNextBtn" aria-label="Next destination">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <div class="slider-counter-track">
+            <span class="slider-counter-current" id="currentSlideNum">01</span>
+            <div class="slider-progress-bar">
+              <div class="slider-progress-fill" id="sliderProgressFill"></div>
+            </div>
+            <span class="slider-counter-total" id="totalSlideNum">05</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Bottom Marquee Bar (From reference image) -->
+    <div class="hero-marquee-bar">
+      <div class="marquee-content" id="marqueeContent">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         MAIN BROCHURE CONTENT & TRANSPORT PLAN
+         ========================================================================== -->
+    <main class="main-content">
+
+      <!-- SECTION 1: DESTINATION BROCHURE SHOWCASE -->
+      <section id="brochure-section" class="destinations-section">
+        <div class="section-head">
+          <span class="section-eyebrow">✦ Official Travel Brochure</span>
+          <h2 class="section-title">Iconic Regions of Germany</h2>
+          <p class="section-desc">
+            Explore world-renowned fairy-tale castles, majestic alpine panoramas, enchanted misty forests, and dynamic
+            cultural capitals connected by seamless high-speed rail.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="brochure-filter-nav">
+          <button class="filter-pill-btn active" data-region="all">All Regions</button>
+          <button class="filter-pill-btn" data-region="bavaria">Bavaria & Alps</button>
+          <button class="filter-pill-btn" data-region="berlin">Berlin & Capital</button>
+          <button class="filter-pill-btn" data-region="black-forest">Black Forest</button>
+          <button class="filter-pill-btn" data-region="rhine-valley">Rhine Gorge</button>
+          <button class="filter-pill-btn" data-region="hamburg">Maritime North</button>
+        </div>
+
+        <!-- Dynamic Destination Cards Grid -->
+        <div class="destinations-grid" id="destinationsGrid"></div>
+
+        <!-- Action Banner to open printable brochure -->
+        <div style="text-align: center; margin-top: 40px;">
+          <button class="btn-db-action open-brochure-modal-btn"
+            style="width: auto; padding: 14px 36px; display: inline-flex;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>View & Print Official Travel Brochure (PDF Ready)</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION 2: COMPREHENSIVE NATIONAL TRANSPORT PLAN (User Request) -->
+      <section id="transport-section" class="transport-section">
+        <div class="section-head">
+          <span class="section-eyebrow">✦ National Rail & Transit Master Plan</span>
+          <h2 class="section-title">Germany’s Transit Super-Network</h2>
+          <p class="section-desc">
+            Germany boasts the world's most integrated public transit ecosystem. Travel seamlessly between high-speed
+            300 km/h ICE trains, double-decker regional routes, and urban metro systems with unified ticketing.
+          </p>
+        </div>
+
+        <!-- Deutschlandticket Spotlight Card -->
+        <div class="dticket-hero-banner">
+          <div>
+            <span class="dticket-badge-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              Tourist Favorite Pass
+            </span>
+            <h3 class="dticket-title">The Deutschlandticket (D-Ticket)</h3>
+            <p class="dticket-subtitle">
+              Enjoy <strong>unlimited travel</strong> across all 16 federal states on every Regional-Express (RE),
+              Regionalbahn (RB), S-Bahn, U-Bahn, tram, city bus, and harbor ferry.
+            </p>
+
+            <div class="dticket-features-row">
+              <div class="dticket-feat-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Valid on all RE / RB trains nationwide</span>
+              </div>
+              <div class="dticket-feat-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Includes all city metros, trams & buses</span>
+              </div>
+              <div class="dticket-feat-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Reaches Neuschwanstein & Rhine Gorge</span>
+              </div>
+              <div class="dticket-feat-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Purchase easily via DB Navigator app</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dticket-price-box">
+            <div class="dticket-price-tag">€49</div>
+            <div class="dticket-price-sub">per calendar month / unlimited rides</div>
+            <button class="btn-db-action"
+              onclick="document.getElementById('plannerFrom').scrollIntoView({behavior:'smooth'})">
+              <span>Test Route Validity</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Core Transit Modes Grid -->
+        <div class="transit-modes-grid">
+
+          <div class="transit-mode-card">
+            <div class="mode-icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="3" width="16" height="16" rx="2"></rect>
+                <path d="M4 11h16"></path>
+                <path d="M12 3v8"></path>
+                <path d="m8 19-2 3"></path>
+                <path d="m16 19 2 3"></path>
+              </svg>
+            </div>
+            <h4 class="transit-mode-name">ICE (Intercity-Express)</h4>
+            <span class="transit-mode-speed">⚡ Speeds up to 300 km/h</span>
+            <p class="transit-mode-desc">The crown jewel of Deutsche Bahn. Ultra-smooth long-distance connections with
+              Bordrestaurant dining and high-speed WiFi.</p>
+            <ul class="transit-mode-perks">
+              <li>Quiet Zones (Ruhebereich)</li>
+              <li>Free onboard DB entertainment portal</li>
+              <li>Power outlets at every seat</li>
+            </ul>
+          </div>
+
+          <div class="transit-mode-card">
+            <div class="mode-icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2">
+                </path>
+                <circle cx="7" cy="17" r="2"></circle>
+                <path d="M9 17h6"></path>
+                <circle cx="17" cy="17" r="2"></circle>
+              </svg>
+            </div>
+            <h4 class="transit-mode-name">RE & RB Regional Rail</h4>
+            <span class="transit-mode-speed">🌲 120 – 160 km/h Regional</span>
+            <p class="transit-mode-desc">Double-decker trains gliding through river valleys, alpine meadows, and
+              forested gorges. 100% covered by Deutschlandticket.</p>
+            <ul class="transit-mode-perks">
+              <li>100% Free with Deutschlandticket</li>
+              <li>Panoramic upper deck view</li>
+              <li>Bicycle storage carriages</li>
+            </ul>
+          </div>
+
+          <div class="transit-mode-card">
+            <div class="mode-icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                </path>
+              </svg>
+            </div>
+            <h4 class="transit-mode-name">S-Bahn & U-Bahn / City</h4>
+            <span class="transit-mode-speed">🏙️ High-frequency Urban</span>
+            <p class="transit-mode-desc">Suburban rail (S-Bahn), underground metro (U-Bahn), modern tramways, and Elbe
+              harbor ferries in every major German city.</p>
+            <ul class="transit-mode-perks">
+              <li>Trains every 3 to 10 minutes</li>
+              <li>Direct airport connections</li>
+              <li>Integrated city transfers</li>
+            </ul>
+          </div>
+
+          <div class="transit-mode-card">
+            <div class="mode-icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+              </svg>
+            </div>
+            <h4 class="transit-mode-name">Scenic & Alpine Cogwheels</h4>
+            <span class="transit-mode-speed">⛰️ Scenic Mountain Climbs</span>
+            <p class="transit-mode-desc">Historic steam locomotives and cogwheel railways scaling the Bavarian Zugspitze
+              (2,962m) and Harz mountain summits.</p>
+            <ul class="transit-mode-perks">
+              <li>Zugspitze Cogwheel line</li>
+              <li>Harz coal-fired steam trains</li>
+              <li>Dramatic mountain viaducts</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- INTERACTIVE ROUTE & TRANSIT PLANNER -->
+        <div class="route-planner-container">
+          <div style="margin-bottom: 24px;">
+            <h3 style="font-size: 1.6rem; font-weight: 800; color: #FFFFFF; margin-bottom: 6px;">
+              Interactive Rail Route Calculator
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Compare high-speed ICE vs regional train durations, frequencies, prices, and Deutschlandticket coverage.
+            </p>
+          </div>
+
+          <!-- Popular Route Chips -->
+          <div class="preset-routes-wrap" id="presetRoutesWrap"></div>
+
+          <!-- Selector Controls -->
+          <div class="planner-controls-bar">
+            <div class="planner-field">
+              <label class="planner-label" for="plannerFrom">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Departure Station (Start)</span>
+              </label>
+              <select id="plannerFrom" class="planner-select">
+                <option value="Berlin Hbf" selected>Berlin Hauptbahnhof</option>
+                <option value="München Hbf">München Hauptbahnhof (Munich)</option>
+                <option value="Frankfurt (Main) Hbf">Frankfurt (Main) Hauptbahnhof</option>
+                <option value="Köln Hbf (Cologne)">Köln Hauptbahnhof (Cologne)</option>
+                <option value="Hamburg Hbf">Hamburg Hauptbahnhof</option>
+              </select>
+            </div>
+
+            <div class="planner-field">
+              <label class="planner-label" for="plannerTo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Destination (Arrival)</span>
+              </label>
+              <select id="plannerTo" class="planner-select">
+                <option value="München Hbf (Munich)" selected>München Hauptbahnhof (Munich)</option>
+                <option value="Füssen (Neuschwanstein Castle)">Füssen (Neuschwanstein Castle)</option>
+                <option value="Heidelberg Hbf">Heidelberg Hauptbahnhof</option>
+                <option value="Koblenz & Rhine Gorge">Koblenz & Rhine Gorge</option>
+                <option value="Berlin Hbf">Berlin Hauptbahnhof</option>
+                <option value="Berchtesgaden & Lake Königssee">Berchtesgaden & Lake Königssee</option>
+              </select>
+            </div>
+
+            <button class="btn-planner-swap" id="btnSwapStations" title="Swap Origin & Destination"
+              aria-label="Swap Stations">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="m7 16 5 5 5-5"></path>
+                <path d="m17 8-5-5-5 5"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Dynamic Route Result Card -->
+          <div class="route-result-card" id="routeResultCard"></div>
+        </div>
+
+        <!-- SECTION 3: GERMANY'S TOP SCENIC RAILWAYS -->
+        <div id="scenic-section" style="margin-top: 40px;">
+          <div class="section-head" style="margin-bottom: 28px;">
+            <span class="section-eyebrow">✦ Panoramic Rail Journeys</span>
+            <h3 class="section-title" style="font-size: 2.2rem;">Germany’s Most Scenic Train Routes</h3>
+            <p class="section-desc">Experience breathtaking natural beauty through your train window, from mist-shrouded
+              Black Forest viaducts to clifftop Rhine fortresses.</p>
+          </div>
+
+          <div class="scenic-rail-grid" id="scenicRailGrid"></div>
+        </div>
+
+        <!-- SECTION 4: TRANSIT PASS COMPARISON TABLE -->
+        <div style="margin-top: 50px;">
+          <div class="section-head" style="margin-bottom: 28px;">
+            <span class="section-eyebrow">✦ Ticket Strategy Matrix</span>
+            <h3 class="section-title" style="font-size: 2.2rem;">Which German Rail Pass is Best for You?</h3>
+          </div>
+
+          <div class="table-responsive-wrap">
+            <table class="transit-table">
+              <thead>
+                <tr>
+                  <th>Pass Option</th>
+                  <th>Cost</th>
+                  <th>Best Used For</th>
+                  <th>ICE High-Speed?</th>
+                  <th>Flexibility</th>
+                  <th>Expert Verdict</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Deutschlandticket</strong></td>
+                  <td>€49–€58 / mo</td>
+                  <td>Regional exploration, cities, day trips, castles</td>
+                  <td><span class="badge-ice-no">✗ No (RE/RB only)</span></td>
+                  <td>Unlimited rides, hop-on hop-off</td>
+                  <td><span style="color: #2ECC71; font-weight:700;">★ Best Value for 90% of travel</span></td>
+                </tr>
+                <tr>
+                  <td><strong>German Rail Pass (Eurail)</strong></td>
+                  <td>€175 – €350+</td>
+                  <td>Fast cross-country trips (Berlin-Munich-Hamburg)</td>
+                  <td><span class="badge-ice-yes">✓ Yes (Included)</span></td>
+                  <td>Hop on any ICE anytime</td>
+                  <td>Best for fast multi-city long distance</td>
+                </tr>
+                <tr>
+                  <td><strong>DB Sparpreis Advance</strong></td>
+                  <td>From €19.99 / trip</td>
+                  <td>Specific point-to-point ICE journeys</td>
+                  <td><span class="badge-ice-yes">✓ Yes (Booked ICE)</span></td>
+                  <td>Specific train time (Zugbindung)</td>
+                  <td>Book 2–4 weeks early for cheap ICE legs</td>
+                </tr>
+                <tr>
+                  <td><strong>Länder-Tickets (Bayern-Ticket)</strong></td>
+                  <td>€29 + €10/person</td>
+                  <td>Small groups traveling 1 day in 1 state</td>
+                  <td><span class="badge-ice-no">✗ Regional only</span></td>
+                  <td>1 calendar day valid after 9am</td>
+                  <td>Great for single group day-trips</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SECTION 5: CURATED MULTI-DAY ITINERARIES -->
+      <section id="itineraries-section" class="itineraries-section">
+        <div class="section-head">
+          <span class="section-eyebrow">✦ Ready-to-Ride Journeys</span>
+          <h2 class="section-title">Curated Multi-Day Rail Itineraries</h2>
+          <p class="section-desc">
+            Complete day-by-day train routes crafted to maximize sightseeing while taking full advantage of the German
+            rail network.
+          </p>
+        </div>
+
+        <div class="itineraries-wrapper" id="itinerariesWrapper"></div>
+      </section>
+
+      <!-- SECTION 6: PRACTICAL TRAVEL GUIDE & ETIOUETTE -->
+      <section id="practical-section" class="practical-section">
+        <div class="section-head">
+          <span class="section-eyebrow">✦ German Travel Savvy</span>
+          <h2 class="section-title">Essential Transit Tips & Etiquette</h2>
+          <p class="section-desc">Key knowledge for navigating stations, booking seats, and traveling like a local
+            across Germany.</p>
+        </div>
+
+        <div class="tips-grid">
+          <div class="tip-card">
+            <span class="tip-cat-tag">App & Tracking</span>
+            <h4 class="tip-title">The DB Navigator App</h4>
+            <p class="tip-content">Essential for every traveler. Shows real-time train coach formation (*Wagenreihung*)
+              so you know exactly which letter section (A–G) on the platform your reserved carriage will halt.</p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-cat-tag">Onboard Etiquette</span>
+            <h4 class="tip-title">Quiet Zones (Ruhebereich)</h4>
+            <p class="tip-content">ICE trains feature dedicated quiet coaches where phone calls, loud music, and noisy
+              chatter are strictly prohibited. Look for the whispering silhouette icon on the door.</p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-cat-tag">Local Transit</span>
+            <h4 class="tip-title">Ticket Validation (Entwerter)</h4>
+            <p class="tip-content">Single paper metro and bus tickets must be stamped in the little red or yellow
+              stamping box (*Entwerter*) before boarding! Deutschlandticket QR codes need no stamping.</p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-cat-tag">Luggage Storage</span>
+            <h4 class="tip-title">Station Lockers (Schließfächer)</h4>
+            <p class="tip-content">Almost every Hauptbahnhof features automatic luggage lockers costing ~€3–€6 for 24
+              hours. Perfect for sightseeing in Nuremberg or Heidelberg during a train layover.</p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-cat-tag">Dining On Rails</span>
+            <h4 class="tip-title">Bordbistro & Draft Beer</h4>
+            <p class="tip-content">German ICE trains feature full Bordbistros serving draft German beer, pretzels,
+              currywurst, and espresso. You are also welcome to bring your own bakery snacks onboard.</p>
+          </div>
+
+          <div class="tip-card">
+            <span class="tip-cat-tag">Local Culture</span>
+            <h4 class="tip-title">Ruhetag (Quiet Sundays)</h4>
+            <p class="tip-content">In Germany, supermarkets and retail shops are closed on Sundays. Train stations
+              (*Hauptbahnhöfe*), however, keep bakeries, convenience markets, and restaurants fully open.</p>
+          </div>
+        </div>
+
+        <!-- FAQ ACCORDION -->
+        <div style="margin-top: 40px;">
+          <div class="section-head" style="margin-bottom: 24px;">
+            <h3 class="section-title" style="font-size: 2rem;">Frequently Asked Questions</h3>
+          </div>
+          <div class="faq-list" id="faqContainer"></div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="app-footer">
+      <div class="footer-top">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+            <div class="brand-logo-circle" style="width:40px; height:40px; font-size:1.1rem;">G</div>
+            <h3 class="footer-brand-title" style="margin:0;">Germany Travel & Transit</h3>
+          </div>
+          <p class="footer-brand-desc">
+            Your definitive travel brochure and national rail guide for exploring Germany's fairy-tale castles, alpine
+            peaks, and cultural capitals with precision and ease.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Destinations</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#brochure-section">Bavaria & Neuschwanstein</a></li>
+            <li class="footer-link-item"><a href="#brochure-section">Berlin & Potsdam</a></li>
+            <li class="footer-link-item"><a href="#brochure-section">The Black Forest</a></li>
+            <li class="footer-link-item"><a href="#brochure-section">The Romantic Rhine</a></li>
+            <li class="footer-link-item"><a href="#brochure-section">Hamburg & Elbe Canals</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Transport Plan</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#transport-section">Deutschlandticket Guide</a></li>
+            <li class="footer-link-item"><a href="#transport-section">ICE High-Speed Trains</a></li>
+            <li class="footer-link-item"><a href="#transport-section">Interactive Route Planner</a></li>
+            <li class="footer-link-item"><a href="#scenic-section">Scenic Railway Lines</a></li>
+            <li class="footer-link-item"><a href="#practical-section">DB Navigator Tips</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Emergency & Help</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><span style="color: #FFFFFF; font-weight:700;">Police:</span> 110</li>
+            <li class="footer-link-item"><span style="color: #FFFFFF; font-weight:700;">Medical/Ambulance:</span> 112
+            </li>
+            <li class="footer-link-item"><span style="color: #FFFFFF; font-weight:700;">DB Rail Hotline:</span> +49 30
+              2970</li>
+            <li class="footer-link-item"><span style="color: #FFFFFF; font-weight:700;">Currency:</span> Euro (€)</li>
+            <li class="footer-link-item"><span style="color: #FFFFFF; font-weight:700;">Tipping:</span> Round up (Stimmt
+              so!)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Germany Travel Brochure & National Transport Plan. All rights reserved.</span>
+        <span>Crafted for travelers exploring Germany by rail and road.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: INSTANT SEARCH MODAL (Ctrl+K or Search Icon)
+       ========================================================================== -->
+  <div class="modal-overlay" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="searchModalTitle">Search Germany Travel & Transport</h3>
+        <button class="modal-close-btn" id="closeSearchModal" aria-label="Close search">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-modal-input-wrap">
+          <svg class="search-icon-pos" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" class="search-modal-input"
+            placeholder="Search castles, ICE routes, cities, D-Ticket..." autocomplete="off">
+        </div>
+        <div class="search-results-list" id="searchResults"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: PRINTABLE TRAVEL BROCHURE (PDF & Print Ready)
+       ========================================================================== -->
+  <div class="modal-overlay" id="brochureModal" role="dialog" aria-modal="true">
+    <div class="modal-window brochure-modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title">Official Germany Travel Brochure & Rail Guide</h3>
+        <button class="modal-close-btn" id="closeBrochureModal" aria-label="Close brochure modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="printable-brochure-container">
+          <div class="print-brochure-head">
+            <div>
+              <span
+                style="font-size: 0.8rem; font-weight:800; letter-spacing:1.5px; color: var(--db-red); text-transform:uppercase;">
+                ✦ Official Travel Brochure & Transit Plan
+              </span>
+              <h2 class="print-title">DEUTSCHLAND • GERMANY</h2>
+              <p style="color: #555; margin-top: 4px; font-size: 0.95rem;">
+                A curated traveler's guide to fairy-tale castles, alpine heights, and the nationwide rail network.
+              </p>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 2rem; font-weight:900; color: #111;">2026 EDITION</div>
+              <span style="font-size: 0.85rem; color: #777;">Includes Deutschlandticket Guide</span>
+            </div>
+          </div>
+
+          <!-- Brochure Content Columns -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+            <div>
+              <h3
+                style="font-size: 1.25rem; font-weight:700; color: #0F1422; border-bottom: 2px solid #EEE; padding-bottom: 6px; margin-bottom: 12px;">
+                🏰 Top Destination Highlights
+              </h3>
+              <ul style="font-size: 0.9rem; line-height: 1.7; color: #333; padding-left: 20px;">
+                <li><strong>Bavaria & Neuschwanstein:</strong> Fairy-tale Romanesque Revival castle, Zugspitze alpine
+                  summit (2,962m), Munich Marienplatz, and Lake Königssee.</li>
+                <li><strong>Berlin Capital Region:</strong> Brandenburg Gate, UNESCO Museum Island, Berlin Wall East
+                  Side Gallery, and Potsdam Sanssouci Palace.</li>
+                <li><strong>The Black Forest (Schwarzwald):</strong> Deep pine trails, Triberg waterfalls, Roman-Irish
+                  thermal spas at Baden-Baden, and cuckoo clocks.</li>
+                <li><strong>The Rhine Gorge & Moselle:</strong> Cliffside castles, steep terraced Riesling vineyards,
+                  and the mythical Lorelei Rock.</li>
+                <li><strong>Hamburg Hanseatic Port:</strong> UNESCO red-brick Speicherstadt warehouses and the
+                  wave-roofed Elbphilharmonie.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3
+                style="font-size: 1.25rem; font-weight:700; color: #0F1422; border-bottom: 2px solid #EEE; padding-bottom: 6px; margin-bottom: 12px;">
+                🚆 Transport Plan Summary
+              </h3>
+              <ul style="font-size: 0.9rem; line-height: 1.7; color: #333; padding-left: 20px;">
+                <li><strong>The Deutschlandticket (€49–€58/mo):</strong> Unlimited travel on all Regional-Express (RE),
+                  Regionalbahn (RB), S-Bahn, U-Bahn, trams, and city buses nationwide.</li>
+                <li><strong>ICE High-Speed Network:</strong> Connects Berlin, Munich, Frankfurt, and Hamburg at speeds
+                  up to 300 km/h with onboard dining and free WiFi.</li>
+                <li><strong>Scenic Rails:</strong> The Black Forest Railway (Offenburg-Konstanz) and the Middle Rhine
+                  Line (Koblenz-Mainz) are 100% covered by Deutschlandticket!</li>
+                <li><strong>DB Navigator App:</strong> Real-time platform tracks (*Gleis*), delays, and train carriage
+                  layout (*Wagenreihung*).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Practical Quick Guide -->
+          <div style="background: #F8F9FC; border-radius: 12px; padding: 20px; border-left: 4px solid var(--db-red);">
+            <h4 style="font-size: 1rem; font-weight:700; color: #0F1422; margin-bottom: 6px;">Essential Traveler
+              Checklist</h4>
+            <p style="font-size: 0.88rem; color: #555; line-height: 1.6;">
+              • <strong>Currency:</strong> Euro (€) — Credit cards widely accepted; keep €10–€20 cash for small bakeries
+              and public restrooms.<br>
+              • <strong>Tipping:</strong> Round up bill to nearest euro or add 5–10% (*Stimmt so!*).<br>
+              • <strong>Emergency Numbers:</strong> Police 110 | Ambulance & Fire 112 | DB Help: +49 30 2970.<br>
+              • <strong>Quiet Zones:</strong> Please observe quiet zones (*Ruhebereich*) on high-speed ICE trains.
+            </p>
+          </div>
+
+          <!-- Print Action Buttons -->
+          <div class="print-actions-bar">
+            <button class="btn-db-action" id="btnPrintBrochure" style="width: auto; padding: 12px 28px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Print / Save as PDF</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/glow-cursor.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
